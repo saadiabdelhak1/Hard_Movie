@@ -102,7 +102,8 @@
     }
 
     .movie-card {
-        @apply bg-dark-100 p-5 rounded-2xl shadow-inner shadow-light-100/10;
+        @apply bg-dark-100 p-5 rounded-2xl shadow-inner shadow-light-100/10 cursor-pointer
+               hover:shadow-light-100/20 hover:scale-105 transition-all duration-300;
 
         & img {
             @apply rounded-lg h-auto w-full;
@@ -146,8 +147,7 @@
     }
 
     .pagination-btn {
-        @apply px-4 py-2 bg-dark-100 text-white rounded-lg hover:bg-light-100/20 
-               disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200;
+        @apply px-4 py-2 bg-dark-100 text-white rounded-lg hover:bg-light-100/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200;
     }
 
     .pagination-numbers {
@@ -155,8 +155,7 @@
     }
 
     .pagination-number {
-        @apply px-3 py-2 bg-dark-100 text-white rounded-lg hover:bg-light-100/20 
-               transition-colors duration-200;
+        @apply px-3 py-2 bg-dark-100 text-white rounded-lg hover:bg-light-100/20 transition-colors duration-200;
         
         &.active {
             @apply bg-light-100 text-primary font-bold;
@@ -165,6 +164,190 @@
 
     .pagination-info {
         @apply text-center;
+    }
+
+    .filters {
+        @apply bg-dark-100 p-5 rounded-2xl mb-8 shadow-inner shadow-light-100/10;
+    }
+
+    .filters-header {
+        @apply flex justify-between items-center mb-4;
+
+        & h3 {
+            @apply text-white text-lg font-semibold;
+        }
+    }
+
+    .clear-filters-btn {
+        @apply px-3 py-1 bg-light-100/20 text-white text-sm rounded-lg hover:bg-light-100/30 transition-colors duration-200;
+    }
+
+    .filters-grid {
+        @apply grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-5;
+    }
+
+    .filter-group {
+        @apply flex flex-col gap-2;
+
+        & label {
+            @apply text-gray-100 text-sm font-medium;
+        }
+    }
+
+    .filter-select {
+        @apply w-full bg-primary border border-light-100/20 text-white px-3 py-2 rounded-lg text-sm
+               focus:outline-none focus:border-light-100/40 focus:ring-1 focus:ring-light-100/40
+               hover:border-light-100/30 transition-colors duration-200;
+
+        & option {
+            @apply bg-primary text-white;
+        }
+    }
+
+    .movie-detail {
+        @apply w-full;
+    }
+
+    .return-btn {
+        @apply flex items-center gap-2 px-4 py-2 bg-dark-100 text-white rounded-lg 
+               hover:bg-light-100/20 transition-colors duration-200 mb-6 text-sm font-medium;
+        
+        & svg {
+            @apply w-4 h-4;
+        }
+    }
+
+    .movie-header {
+        @apply relative w-full h-[60vh] min-h-[400px] rounded-2xl overflow-hidden mb-8;
+    }
+
+    .movie-backdrop {
+        @apply absolute inset-0 w-full h-full bg-center bg-cover;
+    }
+
+    .movie-header-overlay {
+        @apply absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent;
+    }
+
+    .movie-header-content {
+        @apply relative z-10 h-full flex items-center gap-8 p-8;
+    }
+
+    .movie-poster-large {
+        @apply flex-shrink-0;
+
+        & img {
+            @apply w-[300px] h-[450px] object-cover rounded-xl shadow-2xl;
+        }
+    }
+
+    .movie-info {
+        @apply flex-1 text-white space-y-4;
+
+        & h1 {
+            @apply text-4xl font-bold leading-tight;
+        }
+    }
+
+    .movie-meta {
+        @apply flex items-center flex-wrap gap-4 text-gray-200;
+    }
+
+    .movie-meta .rating {
+        @apply flex items-center gap-1;
+
+        & img {
+            @apply w-5 h-5;
+        }
+
+        & span {
+            @apply font-semibold text-white;
+        }
+
+        & .vote-count {
+            @apply text-gray-300 font-normal text-sm;
+        }
+    }
+
+    .movie-meta .release-year,
+    .movie-meta .runtime,
+    .movie-meta .language {
+        @apply px-2 py-1 bg-light-100/20 rounded text-sm;
+    }
+
+    .movie-genres {
+        @apply flex flex-wrap gap-2;
+    }
+
+    .genre-tag {
+        @apply px-3 py-1 bg-light-100/30 text-white text-sm rounded-full;
+    }
+
+    .movie-overview {
+        @apply max-w-2xl;
+
+        & h3 {
+            @apply text-xl font-semibold mb-2;
+        }
+
+        & p {
+            @apply text-gray-200 leading-relaxed;
+        }
+    }
+
+    .movie-details-grid {
+        @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+    }
+
+    .movie-detail-section {
+        @apply bg-dark-100 p-6 rounded-xl;
+
+        & h3 {
+            @apply text-white text-lg font-semibold mb-4;
+        }
+    }
+
+    .detail-grid {
+        @apply space-y-3;
+    }
+
+    .detail-item {
+        @apply flex justify-between items-center;
+    }
+
+    .detail-label {
+        @apply text-gray-300 font-medium;
+    }
+
+    .detail-value {
+        @apply text-white;
+    }
+
+    .production-companies,
+    .languages,
+    .countries {
+        @apply flex flex-wrap gap-2;
+    }
+
+    .company-name,
+    .language-name,
+    .country-name {
+        @apply px-2 py-1 bg-light-100/20 text-white text-sm rounded;
+    }
+
+    /* Responsive adjustments for movie detail */
+    @media (max-width: 768px) {
+        .movie-header-content {
+            @apply flex-col text-center gap-4 p-4;
+        }
+
+        .movie-poster-large img {
+            @apply w-[200px] h-[300px];
+        }
+
+        .movie-info h1 {
+            @apply text-2xl;
+        }
     }
 }
 

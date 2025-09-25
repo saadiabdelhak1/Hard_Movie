@@ -1,10 +1,16 @@
 import React from 'react'
 
-const MovieCard = ({ movie:
-    { title, vote_average, poster_path, release_date, original_language }
-                   }) => {
+const MovieCard = ({ movie, onMovieClick }) => {
+    const { id, title, vote_average, poster_path, release_date, original_language } = movie;
+
+    const handleClick = () => {
+        if (onMovieClick) {
+            onMovieClick(movie);
+        }
+    };
+
     return (
-        <div className="movie-card">
+        <div className="movie-card" onClick={handleClick}>
             <img
                 src={poster_path ?
                     `https://image.tmdb.org/t/p/w500/${poster_path}` : '/no-movie.png'}
@@ -32,4 +38,5 @@ const MovieCard = ({ movie:
         </div>
     )
 }
+
 export default MovieCard
